@@ -16,6 +16,7 @@ sbit LCD_D7_Direction at TRISB3_bit;
 char txt[20];
 char kp = 0, oldState = 0, oldOldState = 0;
 int tmp = 0;
+short typeUser = 0;
 
 short flagTime = 0, flagPlus = 0, flag3 = 0;
 short pomestuvanje = 0, vreme = 0;
@@ -42,11 +43,16 @@ void main() {
      Keypad_Init();
      ANSEL = 0x80;
      ANSELH = 0;
+     TRISA = 0xFF;
      Lcd_Init();
      Lcd_Cmd(_LCD_Clear);
      Lcd_Cmd(_LCD_CURSOR_OFF);
+     ADC_Init();
+     typeUser = ADC_Read(7);
+     WordToStr(typeUser, txt);
+     Lcd_Out(1,1, txt);
      while(1){
-       if(RE2_bit == 0){
+       if(typeUser == 0){
          do
           {
           Lcd_Cmd(_LCD_Clear);
@@ -56,11 +62,16 @@ void main() {
           kp = 0;
           do{
           kp = Keypad_Key_Click();
-          if(RE2_bit != 0){
+          typeUser = ADC_Read(7);
+          if(typeUser != 0){
+           Lcd_Out(1,1, "Break1");
+           Delay_ms(10);
            break;
           }
           }while (!kp);
-          if(RE2_bit != 0){
+          if(typeUser != 0){
+           Lcd_Out(1,1, "Break2");
+           Delay_ms(10);
            break;
           }
           switch (kp)
@@ -179,8 +190,9 @@ void main() {
             }
    }while(1);
   }else{
+
        Lcd_Cmd(_LCD_CLEAR);
-       Lcd_Out(1,1, "Ropakinja");
+       Lcd_Out(1,1, "Nadvor");
   }
   }
 }

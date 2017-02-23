@@ -1564,6 +1564,7 @@ txif_bit
 txreg
 txsta
 txt
+typeuser
 ua
 ua_bit
 uart1_data_ready

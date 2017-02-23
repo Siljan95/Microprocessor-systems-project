@@ -1,4 +1,4 @@
-#line 1 "D:/Viktor/PersonalDocs/1.Faks/5.V-Semestar/1.V Semestar/2.Mikroprocesorski sistemi/Proekt/Proba/Seminarska.c"
+#line 1 "D:/Viktor/PersonalDocs/7.Projects/Microprocessor systems/Proba/Seminarska.c"
 char keypadPort at PORTD;
 
 sbit LCD_RS at RB4_bit;
@@ -17,6 +17,7 @@ sbit LCD_D7_Direction at TRISB3_bit;
 char txt[20];
 char kp = 0, oldState = 0, oldOldState = 0;
 int tmp = 0;
+short typeUser = 0;
 
 short flagTime = 0, flagPlus = 0, flag3 = 0;
 short pomestuvanje = 0, vreme = 0;
@@ -43,11 +44,16 @@ void main() {
  Keypad_Init();
  ANSEL = 0x80;
  ANSELH = 0;
+ TRISA = 0xFF;
  Lcd_Init();
  Lcd_Cmd(_LCD_Clear);
  Lcd_Cmd(_LCD_CURSOR_OFF);
+ ADC_Init();
+ typeUser = ADC_Read(7);
+ WordToStr(typeUser, txt);
+ Lcd_Out(1,1, txt);
  while(1){
- if(RE2_bit == 0){
+ if(typeUser == 0){
  do
  {
  Lcd_Cmd(_LCD_Clear);
@@ -57,11 +63,16 @@ void main() {
  kp = 0;
  do{
  kp = Keypad_Key_Click();
- if(RE2_bit != 0){
+ typeUser = ADC_Read(7);
+ if(typeUser != 0){
+ Lcd_Out(1,1, "Break1");
+ Delay_ms(10);
  break;
  }
  }while (!kp);
- if(RE2_bit != 0){
+ if(typeUser != 0){
+ Lcd_Out(1,1, "Break2");
+ Delay_ms(10);
  break;
  }
  switch (kp)
@@ -137,6 +148,7 @@ void main() {
  tmp = brStanici * 16 + 11;
  EEPROM_Write(tmp, vreme);
  brCifri = 0;
+ flagTime = 0;
  }else{
  if(oldState >= 48 && oldState <= 57){
  brStanici += brCifri * 10 + (oldState - 48);
@@ -180,7 +192,7 @@ void main() {
  }while(1);
  }else{
  Lcd_Cmd(_LCD_CLEAR);
- Lcd_Out(1,1, "Ropakinja");
+ Lcd_Out(1,1, "Nadvor");
  }
  }
 }
