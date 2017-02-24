@@ -191,6 +191,7 @@ void main() {
  }
  }while(1);
  }else{
+
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Out(1,1, "Nadvor");
  }

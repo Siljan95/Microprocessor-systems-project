@@ -1041,11 +1041,11 @@ L_main5:
 ;Seminarska.c,192 :: 		}else{
 	GOTO       L_main96
 L_main3:
-;Seminarska.c,193 :: 		Lcd_Cmd(_LCD_CLEAR);
+;Seminarska.c,194 :: 		Lcd_Cmd(_LCD_CLEAR);
 	MOVLW      1
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;Seminarska.c,194 :: 		Lcd_Out(1,1, "Nadvor");
+;Seminarska.c,195 :: 		Lcd_Out(1,1, "Nadvor");
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -1053,11 +1053,11 @@ L_main3:
 	MOVLW      ?lstr6_Seminarska+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;Seminarska.c,195 :: 		}
-L_main96:
 ;Seminarska.c,196 :: 		}
-	GOTO       L_main1
+L_main96:
 ;Seminarska.c,197 :: 		}
+	GOTO       L_main1
+;Seminarska.c,198 :: 		}
 L_end_main:
 	GOTO       $+0
 ; end of _main
