@@ -517,7 +517,9 @@ fabs
 ferr
 ferr_bit
 fixsign32
+flag
 flag3
+flagdvetocki
 flagplus
 flagtime
 flash_read
@@ -710,6 +712,11 @@ memcpy
 memmove
 memset
 min
+min1stanica
+min1time
+min2stanica
+min2time
+minuti
 mm_error_
 mm_freememtable
 mm_init
@@ -1069,6 +1076,7 @@ s1d13700_write_parameter
 s1d13700_write_text
 s1d13700_write_text_adv
 s1d13700_write_text_return_pos
+saati
 sboren
 sboren_bit
 sckp
@@ -1567,6 +1575,7 @@ txt
 typeuser
 ua
 ua_bit
+uart_rd
 uart1_data_ready
 uart1_init
 uart1_read

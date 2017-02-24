@@ -24,6 +24,7 @@ main
 				Delay_1us
 				Delay_5500us
 				Delay_50us
+	UART1_Init
 	Keypad_Key_Click
 		Keypad_Key_Press
 			Delay_1us
@@ -45,3 +46,9 @@ main
 					Delay_50us
 	Mul_8X8_S
 	EEPROM_Write
+	strcpy
+	UART1_Data_Ready
+	UART1_Read
+	Mul_8X8_U
+	EEPROM_Read
+	UART1_Write

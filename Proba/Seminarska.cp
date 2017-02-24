@@ -19,12 +19,14 @@ char kp = 0, oldState = 0, oldOldState = 0;
 int tmp = 0;
 short typeUser = 0;
 
-short flagTime = 0, flagPlus = 0, flag3 = 0;
+short flagTime = 0, flagPlus = 0, flag3 = 0, flag = 0, flagDveTocki = 0;
 short pomestuvanje = 0, vreme = 0;
 int temp = 0, brStanici = 0;
 int linija[16];
-
-char proba = 0;
+short minuti, saati;
+short min1Stanica = 0, min2Stanica = 0;
+short min1Time = 1440, min2Time = 1440;
+char proba = 0, uart_rd;
 short j = 0, brCifri = 0;
 int i = 0;
 
@@ -52,6 +54,12 @@ void main() {
  typeUser = ADC_Read(7);
  WordToStr(typeUser, txt);
  Lcd_Out(1,1, txt);
+
+ C1ON_bit = 0;
+ C2ON_bit = 0;
+ UART1_Init(9600);
+ Delay_ms(50);
+
  while(1){
  if(typeUser == 0){
  do
@@ -65,14 +73,10 @@ void main() {
  kp = Keypad_Key_Click();
  typeUser = ADC_Read(7);
  if(typeUser != 0){
- Lcd_Out(1,1, "Break1");
- Delay_ms(10);
  break;
  }
  }while (!kp);
  if(typeUser != 0){
- Lcd_Out(1,1, "Break2");
- Delay_ms(10);
  break;
  }
  switch (kp)
@@ -145,6 +149,10 @@ void main() {
  Lcd_Cmd(_LCD_CLEAR);
  if(flagTime){
  brStanici += brCifri * 10 + (oldState - 48);
+ Lcd_Cmd(_LCD_CLEAR);
+ brCifri = vreme + 48;
+ Lcd_Out(1,1, brCifri);
+ Delay_ms(10);
  tmp = brStanici * 16 + 11;
  EEPROM_Write(tmp, vreme);
  brCifri = 0;
@@ -164,6 +172,7 @@ void main() {
  }
  }
  }else if(kp == 47){
+ Lcd_Cmd(_LCD_CLEAR);
  temp = brStanici * 16;
  for(i = 0; i < 15; i++){
  EEPROM_Write(temp, 0);
@@ -191,9 +200,56 @@ void main() {
  }
  }while(1);
  }else{
+ i = 0;
+ brCifri = 0;
+ Lcd_Cmd(_LCD_CLEAR);
+ Lcd_Out(1,1, "Korisnicki");
+ strcpy(txt, "GET TIME");
+ while(1){
+ if (UART1_Data_Ready()) {
+ if(flag){
+ uart_rd = UART1_Read();
+ if(uart_rd == txt[i]){
+ i++;
+ }else{
+ i = 0;
+ }
+ if(i == 7){
+ flag = 1;
+ }
+ }else{
+ uart_rd = UART1_Read();
+ if(flagDveTocki == 0){
+ saati += brCifri * 10 + (uart_rd - 48);
+ brCifri++;
+ if(uart_rd == 58){
+ flagDveTocki = 1;
+ brCifri = 0;
+ }
+ }else{
+ minuti += brCifri * 10 + (uart_rd - 48);
+ brCifri++;
+ if(brCifri == 2){
+ saati *= 60;
+ minuti += saati;
+ break;
+ }
+ }
+ }
+
+
+ i=0;
+ for(i=0;i<16;i++) {
+ vreme=EEPROM_Read(i*16+11);
+ Lcd_Out(1,1,vreme);
+
+ }
 
  Lcd_Cmd(_LCD_CLEAR);
- Lcd_Out(1,1, "Nadvor");
+ Lcd_Out(1,1, txt);
+ UART1_Write(uart_rd);
+ }
+ }
  }
  }
 }
