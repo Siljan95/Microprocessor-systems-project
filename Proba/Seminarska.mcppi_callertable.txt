@@ -44,8 +44,9 @@ main
 					Delay_1us
 					Delay_5500us
 					Delay_50us
-	Mul_8X8_S
+	Mul_16X16_U
 	EEPROM_Write
+	clear
 	strcpy
 	UART1_Data_Ready
 	UART1_Read

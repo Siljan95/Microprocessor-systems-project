@@ -41,6 +41,14 @@ void greska(){
      flag3 = 0;
 }
 
+void clear(){
+     oldState=kp=0;
+     brCifri = 0;
+     brStanici = 0;
+     flagPlus = 0;
+     flag3 = 0;
+}
+
 void main() {
      Keypad_Init();
      ANSEL = 0x80;
@@ -140,6 +148,7 @@ void main() {
                 }
           }else if(kp == 45){  //Time
            flagTime = 1;
+           brStanici = brStanici * 10 + (oldState - 48);
            oldState = 0;
            vreme = brStanici;
            brStanici = 0;
@@ -147,7 +156,7 @@ void main() {
           }else if(kp == 46){  //Add
             Lcd_Cmd(_LCD_CLEAR);
             if(flagTime){           //Ako sakame da vneseme vreme
-              brStanici += brCifri * 10 + (oldState - 48);
+              brStanici = brStanici * 10 + (oldState - 48);
               Lcd_Cmd(_LCD_CLEAR);
               brCifri = vreme + 48;
               Lcd_Out(1,1, brCifri);
@@ -158,7 +167,7 @@ void main() {
               flagTime = 0;
             }else{ //Obicno vnesuvanje na avtobuska linija bez vreme
                 if(oldState >= 48 && oldState <= 57){
-                 brStanici += brCifri * 10 + (oldState - 48);
+                 brStanici = brStanici * 10 + (oldState - 48);
                  EEPROM_Write(brStanici * 16, brStanici);
                  brCifri = 0;
                  tmp = brStanici * 16;
@@ -169,6 +178,8 @@ void main() {
                 }else{
                  greska();
                 }
+                brStanici = 0;
+                clear();
             }
           }else if(kp == 47){  //Erase
           Lcd_Cmd(_LCD_CLEAR);
@@ -183,6 +194,7 @@ void main() {
                oldState = 0;
                pomestuvanje++;
                brCifri = 0;
+               flagPlus = 0;
               }else if(oldState == 76 || oldState == 74){ // J ili L
                  linija[pomestuvanje] = oldState;
                  oldState = 0;
@@ -192,8 +204,9 @@ void main() {
                  brCifri = 0;
               }else{
                if(oldState >= 48 && oldState <= 57){   // Ako e vnesena brojka
-                brStanici += brCifri * 10 + (oldState - 48);
-                brCifri++;
+                brStanici = brStanici * 10 + (oldState - 48);
+                Lcd_Out(1,1, "Vnesena Brojka");
+                Delay_ms(10);
                }
               }
             }
