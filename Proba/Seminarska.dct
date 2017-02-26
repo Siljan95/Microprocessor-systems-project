@@ -406,6 +406,7 @@ chs2
 chs2_bit
 chs3
 chs3_bit
+citaj
 cke
 cke_bit
 ckp
@@ -910,6 +911,7 @@ ra6_bit
 ra7
 ra7_bit
 rand
+razlika
 rb0
 rb0_bit
 rb1
@@ -1320,6 +1322,7 @@ sspmsk
 sspov
 sspov_bit
 sspstat
+stanica
 status
 stra
 stra_bit

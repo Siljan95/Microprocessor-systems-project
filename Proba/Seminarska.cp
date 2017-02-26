@@ -23,10 +23,12 @@ short flagTime = 0, flagPlus = 0, flag3 = 0, flag = 0, flagDveTocki = 0;
 short pomestuvanje = 0, vreme = 0;
 int temp = 0, brStanici = 0;
 int linija[16];
-short minuti, saati;
+short minuti = 0, saati = 0;
 short min1Stanica = 0, min2Stanica = 0;
 short min1Time = 1440, min2Time = 1440;
+short razlika=0,stanica=0;
 char proba = 0, uart_rd;
+char citaj;
 short j = 0, brCifri = 0;
 int i = 0;
 
@@ -220,27 +222,25 @@ void main() {
  strcpy(txt, "GET TIME");
  while(1){
  if (UART1_Data_Ready()) {
- if(flag){
+ if(!flag){
  uart_rd = UART1_Read();
  if(uart_rd == txt[i]){
  i++;
  }else{
  i = 0;
  }
- if(i == 7){
+ if(i == 8){
  flag = 1;
  }
  }else{
  uart_rd = UART1_Read();
- if(flagDveTocki == 0){
- saati += brCifri * 10 + (uart_rd - 48);
- brCifri++;
  if(uart_rd == 58){
  flagDveTocki = 1;
- brCifri = 0;
- }
+ continue;
+ }else if(flagDveTocki == 0){
+ saati = saati * 10 + (uart_rd - 48);
  }else{
- minuti += brCifri * 10 + (uart_rd - 48);
+ minuti = minuti * 10 + (uart_rd - 48);
  brCifri++;
  if(brCifri == 2){
  saati *= 60;
@@ -249,20 +249,63 @@ void main() {
  }
  }
  }
-
+ }
+ }
 
  i=0;
  for(i=0;i<16;i++) {
- vreme=EEPROM_Read(i*16+11);
- Lcd_Out(1,1,vreme);
-
+ tmp = i*16;
+ tmp += 11;
+ vreme=EEPROM_Read(tmp);
+ if(vreme>minuti) {
+ razlika=vreme-minuti;
+ if(razlika<min1Time) {
+ min2Time=min1Time;
+ min1Time=razlika;
+ min2Stanica=min1Stanica;
+ min1Stanica=EEPROM_Read(i*16);
+ }
+ else if(razlika<min2Time && razlika!=min1Time) {
+ min2Time=razlika;
+ min2Stanica=EEPROM_Read(i*16);
+ }
+ }
  }
 
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Out(1,1, txt);
- UART1_Write(uart_rd);
+ i=0;
+ for(i=0;i<16;i++) {
+ stanica=EEPROM_Read(i*16);
+ if(stanica==min1Stanica) {
+ Lcd_Out(1,1,stanica);
+ Lcd_Out_Cp(" ");
+ j=0;
+ for(j=1;j<=10;j++) {
+ citaj=EEPROM_Read(i*16+j);
+ Lcd_Out_Cp(citaj);
+ }
+ vreme=EEPROM_Read(i*16+11);
+ razlika=vreme-minuti;
+ Lcd_Out_Cp(razlika);
+ Lcd_Out_Cp("Min");
+ Delay_ms(10);
+ }
+ if(stanica==min2Stanica) {
+ Lcd_Out(2,1,stanica);
+ Lcd_Out_Cp(" ");
+ j=0;
+ for(j=1;j <= 10;j++) {
+ citaj=EEPROM_Read(i*16+j);
+ Lcd_Out_Cp(citaj);
+ }
+ vreme=EEPROM_Read(i*16+11);
+ razlika=vreme-minuti;
+ Lcd_Out_Cp(razlika);
+ Lcd_Out_Cp("Min");
  }
  }
+ Delay_ms(10);
  }
  }
 }

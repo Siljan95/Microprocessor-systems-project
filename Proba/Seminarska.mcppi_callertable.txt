@@ -47,9 +47,3 @@ main
 	Mul_16X16_U
 	EEPROM_Write
 	clear
-	strcpy
-	UART1_Data_Ready
-	UART1_Read
-	Mul_8X8_U
-	EEPROM_Read
-	UART1_Write
