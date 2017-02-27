@@ -544,6 +544,7 @@ fvren_bit
 gcen
 gcen_bit
 get_fosc_khz
+gettime
 gie
 gie_bit
 glcd_box
@@ -830,6 +831,7 @@ pie2
 pir1
 pir2
 pomestuvanje
+porakaodesurat
 porta
 portb
 portc
@@ -837,6 +839,7 @@ portd
 porte
 pow
 pr2
+print
 proba
 prsen
 prsen_bit
@@ -1289,6 +1292,7 @@ spi1_init
 spi1_init_advanced
 spi1_read
 spi1_write
+sporedba
 sprinti
 sprintl
 sqrt
@@ -1322,8 +1326,10 @@ sspmsk
 sspov
 sspov_bit
 sspstat
+stan
 stanica
 status
+stavi
 stra
 stra_bit
 strb
@@ -1424,6 +1430,7 @@ t6963c_writedata
 tan
 tanh
 temp
+texttest
 time_datetoepoch
 time_epochtodate
 time_jd1970

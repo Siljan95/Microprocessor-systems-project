@@ -12,8 +12,11 @@ main
 	ADC_Init
 	ADC_Read
 		Delay_22us
-	WordToStr
-		Div_16X16_U
+	UART1_Init
+	strcpy
+	UART1_Data_Ready
+	UART1_Read
+	strcmp
 	Lcd_Out
 		Lcd_Cmd
 			Delay_1us
@@ -24,26 +27,22 @@ main
 				Delay_1us
 				Delay_5500us
 				Delay_50us
-	UART1_Init
-	Keypad_Key_Click
-		Keypad_Key_Press
-			Delay_1us
-		Delay_10us
-	greska
+	Mul_8X8_U
+	WordToStr
+		Div_16X16_U
+	EEPROM_Read
+	stavi
+		strncpy
+	Div_8X8_S
+	strlen
+	Lcd_Chr_CP
 		Lcd_Cmd
 			Delay_1us
 			Delay_5500us
 			Delay_50us
-		Lcd_Out
+	Lcd_Out_CP
+		Lcd_Chr_CP
 			Lcd_Cmd
 				Delay_1us
 				Delay_5500us
 				Delay_50us
-			Lcd_Chr_CP
-				Lcd_Cmd
-					Delay_1us
-					Delay_5500us
-					Delay_50us
-	Mul_16X16_U
-	EEPROM_Write
-	clear

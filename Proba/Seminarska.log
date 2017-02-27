@@ -1,15 +1,113 @@
 0	1	mikroCPIC1618.exe -MSF -DBG -pP16F887 -DL -O11111114 -fo8 -N"D:\Viktor\PersonalDocs\7.Projects\Microprocessor systems\Proba\Seminarska.mcppi" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Defs\" -SP"C:\Users\Public\Documents\Mikroelektronika\mikroC PRO for PIC\Uses\P16\" -SP"D:\Viktor\PersonalDocs\7.Projects\Microprocessor systems\Proba\" -SP"D:\Viktor\PersonalDocs\1.Faks\5.V-Semestar\1.V Semestar\2.Mikroprocesorski sistemi\Proekt\Proba\" "Seminarska.c" "__Lib_Math.mcl" "__Lib_MathDouble.mcl" "__Lib_System.mcl" "__Lib_Delays.mcl" "__Lib_CType.mcl" "__Lib_CString.mcl" "__Lib_CStdlib.mcl" "__Lib_CMath.mcl" "__Lib_MemManager.mcl" "__Lib_Conversions.mcl" "__Lib_Sprinti.mcl" "__Lib_Sprintl.mcl" "__Lib_Time.mcl" "__Lib_Trigonometry.mcl" "__Lib_Button.mcl" "__Lib_Keypad4x4.mcl" "__Lib_Manchester.mcl" "__Lib_OneWire.mcl" "__Lib_PS2.mcl" "__Lib_Sound.mcl" "__Lib_SoftI2C.mcl" "__Lib_SoftSPI.mcl" "__Lib_SoftUART.mcl" "__Lib_ADC_88X.mcl" "__Lib_EEPROM.mcl" "__Lib_FLASH_RW.mcl" "__Lib_I2C_c34.mcl" "__Lib_PWM_c21.mcl" "__Lib_SPI_c345.mcl" "__Lib_UART_c67.mcl" "__Lib_PortExpander.mcl" "__Lib_CANSPI.mcl" "__Lib_CF.mcl" "__Lib_GlcdFonts.mcl" "__Lib_Glcd.mcl" "__Lib_LcdConsts.mcl" "__Lib_Lcd.mcl" "__Lib_RS485.mcl" "__Lib_S1D13700.mcl" "__Lib_T6963C.mcl" "__Lib_SPIGlcd.mcl" "__Lib_SPILcd.mcl" "__Lib_SPILcd8.mcl" "__Lib_SPIT6963C.mcl" "__Lib_EthEnc28j60.mcl" "__Lib_EthEnc24j600.mcl" "__Lib_TouchPanel.mcl"	 
 hint: 0	1139	Available RAM: 352 [bytes], Available ROM: 8192 [bytes]	 
 diagnostics: 0	122	Compilation Started	Seminarska.c
-warning: 69	1509	Generated baud rate is 9615 bps (error = 0.16 percent)	Seminarska.c
-warning: 164	1508	Implicit conversion of int to ptr	Seminarska.c
-warning: 280	1508	Implicit conversion of int to ptr	Seminarska.c
-warning: 285	1508	Implicit conversion of int to ptr	Seminarska.c
-warning: 289	1508	Implicit conversion of int to ptr	Seminarska.c
-warning: 294	1508	Implicit conversion of int to ptr	Seminarska.c
-warning: 299	1508	Implicit conversion of int to ptr	Seminarska.c
-warning: 303	1508	Implicit conversion of int to ptr	Seminarska.c
-diagnostics: 310	123	Compiled Successfully	Seminarska.c
-diagnostics: 0	127	All files Compiled in 110 ms	 
-error: 0	434	Demo Limit	Demo Limit
-error: 0	102	Finished (with errors): 26 Feb 2017, 14:38:58	Seminarska.mcppi
+warning: 42	1508	Implicit conversion of int to ptr	Seminarska.c
+warning: 86	1509	Generated baud rate is 9615 bps (error = 0.16 percent)	Seminarska.c
+warning: 181	1508	Implicit conversion of int to ptr	Seminarska.c
+warning: 186	1506	Implicit conversion of pointer to int	Seminarska.c
+warning: 188	1506	Implicit conversion of pointer to int	Seminarska.c
+warning: 190	1506	Implicit conversion of pointer to int	Seminarska.c
+warning: 370	1506	Implicit conversion of pointer to int	Seminarska.c
+warning: 382	1508	Implicit conversion of int to ptr	Seminarska.c
+diagnostics: 398	123	Compiled Successfully	Seminarska.c
+diagnostics: 0	127	All files Compiled in 188 ms	 
+error: 7	342	There is not enough ROM space	__Lib_Delays.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 67	392	Address must be greater than 0 main	Seminarska.c
+error: 134	392	Address must be greater than 0 __CC2DW	__Lib_System.c
+error: 46	392	Address must be greater than 0 greska	Seminarska.c
+error: 46	392	Address must be greater than 0 greska	Seminarska.c
+error: 84	392	Address must be greater than 0 Lcd_Init	__Lib_Lcd.c
+error: 84	392	Address must be greater than 0 Lcd_Init	__Lib_Lcd.c
+error: 84	392	Address must be greater than 0 Lcd_Init	__Lib_Lcd.c
+error: 84	392	Address must be greater than 0 Lcd_Init	__Lib_Lcd.c
+error: 84	392	Address must be greater than 0 Lcd_Init	__Lib_Lcd.c
+error: 84	392	Address must be greater than 0 Lcd_Init	__Lib_Lcd.c
+error: 0	102	Finished (with errors): 27 Feb 2017, 23:39:39	Seminarska.mcppi

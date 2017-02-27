@@ -15,6 +15,7 @@ sbit LCD_D6_Direction at TRISB2_bit;
 sbit LCD_D7_Direction at TRISB3_bit;
 
 char txt[20];
+char textTest[20];
 char kp = 0, oldState = 0, oldOldState = 0;
 int tmp = 0;
 short typeUser = 0;
@@ -23,15 +24,25 @@ short flagTime = 0, flagPlus = 0, flag3 = 0, flag = 0, flagDveTocki = 0;
 short pomestuvanje = 0, vreme = 0;
 int temp = 0, brStanici = 0;
 int linija[16];
+char print[20];
 short minuti = 0, saati = 0;
-short min1Stanica = 0, min2Stanica = 0;
-short min1Time = 1440, min2Time = 1440;
+short min1Stanica = 100, min2Stanica = 100;
+int min1Time = 1440, min2Time = 1440;
 short razlika=0,stanica=0;
 char proba = 0, uart_rd;
 char citaj;
 short j = 0, brCifri = 0;
 int i = 0;
+char stan;
+short sporedba = 100;
+char getTime[20];
+char porakaOdEsurat[20];
 
+
+void stavi(char neso){
+ strncpy(print,neso,pomestuvanje);
+ pomestuvanje++;
+}
 
 void greska(){
  Lcd_Cmd(_LCD_CLEAR);
@@ -50,6 +61,8 @@ void clear(){
  brStanici = 0;
  flagPlus = 0;
  flag3 = 0;
+ pomestuvanje = 0;
+ flagTime = 0;
 }
 
 void main() {
@@ -62,8 +75,12 @@ void main() {
  Lcd_Cmd(_LCD_CURSOR_OFF);
  ADC_Init();
  typeUser = ADC_Read(7);
- WordToStr(typeUser, txt);
- Lcd_Out(1,1, txt);
+
+
+
+
+
+
 
  C1ON_bit = 0;
  C2ON_bit = 0;
@@ -71,7 +88,7 @@ void main() {
  Delay_ms(50);
 
  while(1){
- if(typeUser == 0){
+ if(typeUser == 1){
  do
  {
  Lcd_Cmd(_LCD_Clear);
@@ -166,8 +183,13 @@ void main() {
  Delay_ms(10);
  tmp = brStanici * 16 + 11;
  EEPROM_Write(tmp, vreme);
- brCifri = 0;
- flagTime = 0;
+ tmp += 2;
+ EEPROM_Write(tmp, "M");
+ tmp += 1;
+ EEPROM_Write(tmp, "i");
+ tmp += 1;
+ EEPROM_Write(tmp, "n");
+ clear();
  }else{
  if(oldState >= 48 && oldState <= 57){
  brStanici = brStanici * 10 + (oldState - 48);
@@ -181,7 +203,6 @@ void main() {
  }else{
  greska();
  }
- brStanici = 0;
  clear();
  }
  }else if(kp == 47){
@@ -204,7 +225,6 @@ void main() {
  pomestuvanje++;
  Lcd_Cmd(_LCD_CLEAR);
  Lcd_Out(1,1, "J ili L");
- brCifri = 0;
  }else{
  if(oldState >= 48 && oldState <= 57){
  brStanici = brStanici * 10 + (oldState - 48);
@@ -216,27 +236,34 @@ void main() {
  }while(1);
  }else{
  i = 0;
+ flag=0;
  brCifri = 0;
- Lcd_Cmd(_LCD_CLEAR);
- Lcd_Out(1,1, "Korisnicki");
- strcpy(txt, "GET TIME");
+ strcpy(getTime, "GET TIME");
  while(1){
  if (UART1_Data_Ready()) {
- if(!flag){
  uart_rd = UART1_Read();
- if(uart_rd == txt[i]){
+ porakaOdEsurat[i] = uart_rd;
  i++;
- }else{
- i = 0;
+ sporedba = strcmp(getTime,porakaOdEsurat);
+ if(sporedba == 0){
+ flag=1;
+ Lcd_Out(1,1,"bREAK");
+ Delay_ms(10);
+ break;
  }
- if(i == 8){
- flag = 1;
+ else{
+ flag=0;
  }
- }else{
+ }
+ }
+ if(flag==1) {
+ while(1){
+ Lcd_Out(1,1,"PAJD");
+ if(UART1_Data_Ready()){
  uart_rd = UART1_Read();
  if(uart_rd == 58){
  flagDveTocki = 1;
- continue;
+
  }else if(flagDveTocki == 0){
  saati = saati * 10 + (uart_rd - 48);
  }else{
@@ -250,20 +277,37 @@ void main() {
  }
  }
  }
- }
+
 
  i=0;
  for(i=0;i<16;i++) {
  tmp = i*16;
  tmp += 11;
+ WordToStr(i, textTest);
+ Lcd_Out(2,1, textTest);
  vreme=EEPROM_Read(tmp);
- if(vreme>minuti) {
+ if(vreme == 65535){
+ continue;
+ }
+
+
+
+ if(vreme > minuti) {
  razlika=vreme-minuti;
- if(razlika<min1Time) {
+ Lcd_Cmd(_LCD_CLEAR);
+ WordToStr(razlika, textTest);
+ Lcd_Out(1,1, textTest);
+ Lcd_Out(2,1, "Proba");
+ Delay_ms(10);
+ if(razlika < min1Time) {
  min2Time=min1Time;
  min1Time=razlika;
  min2Stanica=min1Stanica;
  min1Stanica=EEPROM_Read(i*16);
+ WordToStr(min1Stanica, textTest);
+ Lcd_Out(1,1, textTest);
+ Lcd_Out(2,1, "VIkac");
+ Delay_ms(10);
  }
  else if(razlika<min2Time && razlika!=min1Time) {
  min2Time=razlika;
@@ -272,27 +316,66 @@ void main() {
  }
  }
 
- Lcd_Cmd(_LCD_CLEAR);
- Lcd_Out(1,1, txt);
  i=0;
+ pomestuvanje = 0;
  for(i=0;i<16;i++) {
+ Lcd_Cmd(_LCD_CLEAR);
+ Lcd_Out(1,1,"Bogdan Konj");
+ WordToStr(i, textTest);
+ Lcd_Out(2,1,textTest);
+ Delay_ms(5);
+ Lcd_Cmd(_LCD_CLEAR);
  stanica=EEPROM_Read(i*16);
  if(stanica==min1Stanica) {
- Lcd_Out(1,1,stanica);
- Lcd_Out_Cp(" ");
+ stan=min1stanica + 48;
+
+ stavi(stan);
+
+
+ stavi(' ');
+
  j=0;
  for(j=1;j<=10;j++) {
  citaj=EEPROM_Read(i*16+j);
- Lcd_Out_Cp(citaj);
+ if(citaj == 0xFF){
+ break;
+ }
+ print[pomestuvanje] = citaj;
+ stavi(citaj);
+
  }
  vreme=EEPROM_Read(i*16+11);
  razlika=vreme-minuti;
- Lcd_Out_Cp(razlika);
- Lcd_Out_Cp("Min");
- Delay_ms(10);
+ while(razlika) {
+ stan=(razlika%10)+48;
+
+ stavi(stan);
+
+ razlika=razlika/10;
  }
- if(stanica==min2Stanica) {
- Lcd_Out(2,1,stanica);
+
+ stavi('M');
+
+
+ stavi('i');
+
+
+ stavi('n');
+
+
+ brCifri = strlen(print);
+ Lcd_Cmd(_LCD_CLEAR);
+ Lcd_Out(1,1,"");
+ for(i = 0; i < brCifri; i++){
+ WordToStr(print[i], textTest);
+ Lcd_Chr_CP(textTest);
+ }
+
+ Delay_ms(15);
+ }
+ if(stanica == min2Stanica) {
+ WordToStr(stanica, textTest);
+ Lcd_Out(2,1,textTest);
  Lcd_Out_Cp(" ");
  j=0;
  for(j=1;j <= 10;j++) {
@@ -301,11 +384,16 @@ void main() {
  }
  vreme=EEPROM_Read(i*16+11);
  razlika=vreme-minuti;
- Lcd_Out_Cp(razlika);
+ WordToStr(razlika, textTest);
+ Lcd_Out_Cp(textTest);
  Lcd_Out_Cp("Min");
  }
  }
+
  Delay_ms(10);
+ Lcd_Out(1,1, "KRAJ");
+ Delay_ms(5);
+ }
  }
  }
 }
