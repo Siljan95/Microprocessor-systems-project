@@ -84,15 +84,15 @@ _pecatiMin:
 	MOVLW      255
 	MOVWF      _temp+1
 	MOVF       R0+0, 0
-L__pecatiMin162:
+L__pecatiMin166:
 	BTFSC      STATUS+0, 2
-	GOTO       L__pecatiMin163
+	GOTO       L__pecatiMin167
 	RLF        _temp+0, 1
 	RLF        _temp+1, 1
 	BCF        _temp+0, 0
 	ADDLW      255
-	GOTO       L__pecatiMin162
-L__pecatiMin163:
+	GOTO       L__pecatiMin166
+L__pecatiMin167:
 ;Seminarska.c,57 :: 		temp++;
 	INCF       _temp+0, 1
 	BTFSC      STATUS+0, 2
@@ -141,10 +141,10 @@ L_pecatiMin3:
 	MOVLW      128
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__pecatiMin164
+	GOTO       L__pecatiMin168
 	MOVLW      9
 	SUBWF      _i+0, 0
-L__pecatiMin164:
+L__pecatiMin168:
 	BTFSC      STATUS+0, 0
 	GOTO       L_pecatiMin4
 ;Seminarska.c,65 :: 		kp = EEPROM_Read(temp);
@@ -162,7 +162,7 @@ L__pecatiMin164:
 	SUBWF      _kp+0, 0
 	BTFSC      STATUS+0, 0
 	GOTO       L_pecatiMin8
-L__pecatiMin155:
+L__pecatiMin159:
 ;Seminarska.c,67 :: 		Lcd_Chr(red, k, kp);
 	MOVF       FARG_pecatiMin_red+0, 0
 	MOVWF      FARG_Lcd_Chr_row+0
@@ -234,10 +234,10 @@ L_pecatiMin9:
 	MOVLW      128
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__pecatiMin165
+	GOTO       L__pecatiMin169
 	MOVLW      3
 	SUBWF      _i+0, 0
-L__pecatiMin165:
+L__pecatiMin169:
 	BTFSC      STATUS+0, 0
 	GOTO       L_pecatiMin10
 ;Seminarska.c,80 :: 		kp = EEPROM_Read(temp);
@@ -475,7 +475,7 @@ L_main19:
 	XORLW      47
 	BTFSC      STATUS+0, 2
 	GOTO       L_main24
-L__main161:
+L__main165:
 ;Seminarska.c,167 :: 		oldState = kp;
 	MOVF       _kp+0, 0
 	MOVWF      _oldState+0
@@ -675,21 +675,21 @@ L_main31:
 	MOVF       _kp+0, 0
 	XORLW      43
 	BTFSC      STATUS+0, 2
-	GOTO       L__main160
+	GOTO       L__main164
 	MOVF       _kp+0, 0
 	XORLW      45
 	BTFSC      STATUS+0, 2
-	GOTO       L__main160
+	GOTO       L__main164
 	MOVF       _kp+0, 0
 	XORLW      46
 	BTFSC      STATUS+0, 2
-	GOTO       L__main160
+	GOTO       L__main164
 	MOVF       _kp+0, 0
 	XORLW      47
 	BTFSC      STATUS+0, 2
-	GOTO       L__main160
+	GOTO       L__main164
 	GOTO       L_main51
-L__main160:
+L__main164:
 ;Seminarska.c,201 :: 		greska();
 	CALL       _greska+0
 ;Seminarska.c,202 :: 		}
@@ -1055,10 +1055,10 @@ L_main87:
 	MOVLW      128
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main166
+	GOTO       L__main170
 	MOVLW      16
 	SUBWF      _i+0, 0
-L__main166:
+L__main170:
 	BTFSC      STATUS+0, 0
 	GOTO       L_main88
 ;Seminarska.c,253 :: 		if(brStanici == EEPROM_Read(i * 16)){
@@ -1067,22 +1067,22 @@ L__main166:
 	MOVF       _i+0, 0
 	MOVWF      FARG_EEPROM_Read_Address+0
 	MOVF       R0+0, 0
-L__main167:
+L__main171:
 	BTFSC      STATUS+0, 2
-	GOTO       L__main168
+	GOTO       L__main172
 	RLF        FARG_EEPROM_Read_Address+0, 1
 	BCF        FARG_EEPROM_Read_Address+0, 0
 	ADDLW      255
-	GOTO       L__main167
-L__main168:
+	GOTO       L__main171
+L__main172:
 	CALL       _EEPROM_Read+0
 	MOVLW      0
 	XORWF      _brStanici+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main169
+	GOTO       L__main173
 	MOVF       R0+0, 0
 	XORWF      _brStanici+0, 0
-L__main169:
+L__main173:
 	BTFSS      STATUS+0, 2
 	GOTO       L_main90
 ;Seminarska.c,254 :: 		tmp = i * 16 + 11;
@@ -1093,15 +1093,15 @@ L__main169:
 	MOVF       _i+1, 0
 	MOVWF      R0+1
 	MOVF       R2+0, 0
-L__main170:
+L__main174:
 	BTFSC      STATUS+0, 2
-	GOTO       L__main171
+	GOTO       L__main175
 	RLF        R0+0, 1
 	RLF        R0+1, 1
 	BCF        R0+0, 0
 	ADDLW      255
-	GOTO       L__main170
-L__main171:
+	GOTO       L__main174
+L__main175:
 	MOVLW      11
 	ADDWF      R0+0, 1
 	BTFSC      STATUS+0, 0
@@ -1128,30 +1128,30 @@ L__main171:
 	MOVWF      _tmp+0
 	MOVF       R0+1, 0
 	MOVWF      _tmp+1
-;Seminarska.c,257 :: 		EEPROM_Write(tmp, "M");
+;Seminarska.c,257 :: 		EEPROM_Write(tmp, 'M');
 	MOVF       R0+0, 0
 	MOVWF      FARG_EEPROM_Write_Address+0
-	MOVLW      ?lstr_4_Seminarska+0
+	MOVLW      77
 	MOVWF      FARG_EEPROM_Write_data_+0
 	CALL       _EEPROM_Write+0
 ;Seminarska.c,258 :: 		tmp += 1;
 	INCF       _tmp+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _tmp+1, 1
-;Seminarska.c,259 :: 		EEPROM_Write(tmp, "i");
+;Seminarska.c,259 :: 		EEPROM_Write(tmp, 'i');
 	MOVF       _tmp+0, 0
 	MOVWF      FARG_EEPROM_Write_Address+0
-	MOVLW      ?lstr_5_Seminarska+0
+	MOVLW      105
 	MOVWF      FARG_EEPROM_Write_data_+0
 	CALL       _EEPROM_Write+0
 ;Seminarska.c,260 :: 		tmp += 1;
 	INCF       _tmp+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _tmp+1, 1
-;Seminarska.c,261 :: 		EEPROM_Write(tmp, "n");
+;Seminarska.c,261 :: 		EEPROM_Write(tmp, 'n');
 	MOVF       _tmp+0, 0
 	MOVWF      FARG_EEPROM_Write_Address+0
-	MOVLW      ?lstr_6_Seminarska+0
+	MOVLW      110
 	MOVWF      FARG_EEPROM_Write_data_+0
 	CALL       _EEPROM_Write+0
 ;Seminarska.c,262 :: 		}
@@ -1177,7 +1177,7 @@ L_main86:
 	SUBLW      57
 	BTFSS      STATUS+0, 0
 	GOTO       L_main94
-L__main159:
+L__main163:
 ;Seminarska.c,267 :: 		brStanici = brStanici * 10 + (oldState - 48);
 	MOVF       _brStanici+0, 0
 	MOVWF      R0+0
@@ -1212,10 +1212,10 @@ L_main95:
 	MOVLW      128
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main172
+	GOTO       L__main176
 	MOVLW      16
 	SUBWF      _i+0, 0
-L__main172:
+L__main176:
 	BTFSC      STATUS+0, 0
 	GOTO       L_main96
 ;Seminarska.c,269 :: 		if(brStanici == EEPROM_Read(i * 16)){
@@ -1224,83 +1224,30 @@ L__main172:
 	MOVF       _i+0, 0
 	MOVWF      FARG_EEPROM_Read_Address+0
 	MOVF       R0+0, 0
-L__main173:
+L__main177:
 	BTFSC      STATUS+0, 2
-	GOTO       L__main174
+	GOTO       L__main178
 	RLF        FARG_EEPROM_Read_Address+0, 1
 	BCF        FARG_EEPROM_Read_Address+0, 0
 	ADDLW      255
-	GOTO       L__main173
-L__main174:
+	GOTO       L__main177
+L__main178:
 	CALL       _EEPROM_Read+0
 	MOVLW      0
 	XORWF      _brStanici+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main175
+	GOTO       L__main179
 	MOVF       R0+0, 0
 	XORWF      _brStanici+0, 0
-L__main175:
+L__main179:
 	BTFSS      STATUS+0, 2
 	GOTO       L_main98
-;Seminarska.c,270 :: 		temp = i * 16;
+;Seminarska.c,270 :: 		tmp = i * 16;
 	MOVLW      4
 	MOVWF      R0+0
 	MOVF       _i+0, 0
-	MOVWF      _temp+0
-	MOVF       _i+1, 0
-	MOVWF      _temp+1
-	MOVF       R0+0, 0
-L__main176:
-	BTFSC      STATUS+0, 2
-	GOTO       L__main177
-	RLF        _temp+0, 1
-	RLF        _temp+1, 1
-	BCF        _temp+0, 0
-	ADDLW      255
-	GOTO       L__main176
-L__main177:
-;Seminarska.c,271 :: 		flagVneseno = 1;
-	MOVLW      1
-	MOVWF      _flagVneseno+0
-;Seminarska.c,272 :: 		}
-L_main98:
-;Seminarska.c,268 :: 		for(i = 0; i < 16; i++){
-	INCF       _i+0, 1
-	BTFSC      STATUS+0, 2
-	INCF       _i+1, 1
-;Seminarska.c,273 :: 		}
-	GOTO       L_main95
-L_main96:
-;Seminarska.c,274 :: 		if(flagVneseno == 0){
-	MOVF       _flagVneseno+0, 0
-	XORLW      0
-	BTFSS      STATUS+0, 2
-	GOTO       L_main99
-;Seminarska.c,275 :: 		EEPROM_Write(countStanici * 16, brStanici);
-	MOVLW      4
-	MOVWF      R0+0
-	MOVF       _countStanici+0, 0
-	MOVWF      FARG_EEPROM_Write_Address+0
-	MOVF       R0+0, 0
-L__main178:
-	BTFSC      STATUS+0, 2
-	GOTO       L__main179
-	RLF        FARG_EEPROM_Write_Address+0, 1
-	BCF        FARG_EEPROM_Write_Address+0, 0
-	ADDLW      255
-	GOTO       L__main178
-L__main179:
-	MOVF       _brStanici+0, 0
-	MOVWF      FARG_EEPROM_Write_data_+0
-	CALL       _EEPROM_Write+0
-;Seminarska.c,276 :: 		tmp = countStanici * 16;
-	MOVLW      4
-	MOVWF      R0+0
-	MOVF       _countStanici+0, 0
 	MOVWF      _tmp+0
-	MOVLW      0
-	BTFSC      _tmp+0, 7
-	MOVLW      255
+	MOVF       _i+1, 0
 	MOVWF      _tmp+1
 	MOVF       R0+0, 0
 L__main180:
@@ -1312,10 +1259,77 @@ L__main180:
 	ADDLW      255
 	GOTO       L__main180
 L__main181:
-;Seminarska.c,277 :: 		for(i = 0; i < pomestuvanje; i++){
+;Seminarska.c,271 :: 		break;
+	GOTO       L_main96
+;Seminarska.c,272 :: 		}else if(EEPROM_Read(i * 16) == 0xFF){
+L_main98:
+	MOVLW      4
+	MOVWF      R0+0
+	MOVF       _i+0, 0
+	MOVWF      FARG_EEPROM_Read_Address+0
+	MOVF       R0+0, 0
+L__main182:
+	BTFSC      STATUS+0, 2
+	GOTO       L__main183
+	RLF        FARG_EEPROM_Read_Address+0, 1
+	BCF        FARG_EEPROM_Read_Address+0, 0
+	ADDLW      255
+	GOTO       L__main182
+L__main183:
+	CALL       _EEPROM_Read+0
+	MOVF       R0+0, 0
+	XORLW      255
+	BTFSS      STATUS+0, 2
+	GOTO       L_main100
+;Seminarska.c,273 :: 		EEPROM_Write(i * 16, brStanici);
+	MOVLW      4
+	MOVWF      R0+0
+	MOVF       _i+0, 0
+	MOVWF      FARG_EEPROM_Write_Address+0
+	MOVF       R0+0, 0
+L__main184:
+	BTFSC      STATUS+0, 2
+	GOTO       L__main185
+	RLF        FARG_EEPROM_Write_Address+0, 1
+	BCF        FARG_EEPROM_Write_Address+0, 0
+	ADDLW      255
+	GOTO       L__main184
+L__main185:
+	MOVF       _brStanici+0, 0
+	MOVWF      FARG_EEPROM_Write_data_+0
+	CALL       _EEPROM_Write+0
+;Seminarska.c,274 :: 		tmp = i * 16;
+	MOVLW      4
+	MOVWF      R0+0
+	MOVF       _i+0, 0
+	MOVWF      _tmp+0
+	MOVF       _i+1, 0
+	MOVWF      _tmp+1
+	MOVF       R0+0, 0
+L__main186:
+	BTFSC      STATUS+0, 2
+	GOTO       L__main187
+	RLF        _tmp+0, 1
+	RLF        _tmp+1, 1
+	BCF        _tmp+0, 0
+	ADDLW      255
+	GOTO       L__main186
+L__main187:
+;Seminarska.c,275 :: 		break;
+	GOTO       L_main96
+;Seminarska.c,276 :: 		}
+L_main100:
+;Seminarska.c,268 :: 		for(i = 0; i < 16; i++){
+	INCF       _i+0, 1
+	BTFSC      STATUS+0, 2
+	INCF       _i+1, 1
+;Seminarska.c,277 :: 		}
+	GOTO       L_main95
+L_main96:
+;Seminarska.c,278 :: 		for(i = 0; i < pomestuvanje; i++){
 	CLRF       _i+0
 	CLRF       _i+1
-L_main100:
+L_main101:
 	MOVLW      128
 	XORWF      _i+1, 0
 	MOVWF      R0+0
@@ -1324,17 +1338,17 @@ L_main100:
 	MOVLW      127
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main182
+	GOTO       L__main188
 	MOVF       _pomestuvanje+0, 0
 	SUBWF      _i+0, 0
-L__main182:
+L__main188:
 	BTFSC      STATUS+0, 0
-	GOTO       L_main101
-;Seminarska.c,278 :: 		tmp += 1;
+	GOTO       L_main102
+;Seminarska.c,279 :: 		tmp += 1;
 	INCF       _tmp+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _tmp+1, 1
-;Seminarska.c,279 :: 		EEPROM_Write(tmp, linija[i]);
+;Seminarska.c,280 :: 		EEPROM_Write(tmp, linija[i]);
 	MOVF       _tmp+0, 0
 	MOVWF      FARG_EEPROM_Write_Address+0
 	MOVF       _i+0, 0
@@ -1350,21 +1364,21 @@ L__main182:
 	MOVF       INDF+0, 0
 	MOVWF      FARG_EEPROM_Write_data_+0
 	CALL       _EEPROM_Write+0
-;Seminarska.c,277 :: 		for(i = 0; i < pomestuvanje; i++){
+;Seminarska.c,278 :: 		for(i = 0; i < pomestuvanje; i++){
 	INCF       _i+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _i+1, 1
-;Seminarska.c,280 :: 		}
-	GOTO       L_main100
-L_main101:
-;Seminarska.c,281 :: 		brCifri = 15 - pomestuvanje;
+;Seminarska.c,281 :: 		}
+	GOTO       L_main101
+L_main102:
+;Seminarska.c,282 :: 		brCifri = 15 - pomestuvanje;
 	MOVF       _pomestuvanje+0, 0
 	SUBLW      15
 	MOVWF      _brCifri+0
-;Seminarska.c,282 :: 		for(i = 0; i < brCifri; i++){
+;Seminarska.c,283 :: 		for(i = 0; i < brCifri; i++){
 	CLRF       _i+0
 	CLRF       _i+1
-L_main103:
+L_main104:
 	MOVLW      128
 	XORWF      _i+1, 0
 	MOVWF      R0+0
@@ -1373,188 +1387,51 @@ L_main103:
 	MOVLW      127
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main183
+	GOTO       L__main189
 	MOVF       _brCifri+0, 0
 	SUBWF      _i+0, 0
-L__main183:
+L__main189:
 	BTFSC      STATUS+0, 0
-	GOTO       L_main104
-;Seminarska.c,283 :: 		tmp += 1;
+	GOTO       L_main105
+;Seminarska.c,284 :: 		tmp += 1;
 	INCF       _tmp+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _tmp+1, 1
-;Seminarska.c,284 :: 		EEPROM_Write(tmp, 0);
+;Seminarska.c,285 :: 		EEPROM_Write(tmp, 0);
 	MOVF       _tmp+0, 0
 	MOVWF      FARG_EEPROM_Write_Address+0
 	CLRF       FARG_EEPROM_Write_data_+0
 	CALL       _EEPROM_Write+0
-;Seminarska.c,282 :: 		for(i = 0; i < brCifri; i++){
+;Seminarska.c,283 :: 		for(i = 0; i < brCifri; i++){
 	INCF       _i+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _i+1, 1
-;Seminarska.c,285 :: 		}
-	GOTO       L_main103
-L_main104:
-;Seminarska.c,286 :: 		countStanici++;
-	INCF       _countStanici+0, 1
+;Seminarska.c,286 :: 		}
+	GOTO       L_main104
+L_main105:
 ;Seminarska.c,287 :: 		}else{
-	GOTO       L_main106
-L_main99:
+	GOTO       L_main107
+L_main94:
 ;Seminarska.c,288 :: 		greska();
 	CALL       _greska+0
 ;Seminarska.c,289 :: 		}
-L_main106:
-;Seminarska.c,290 :: 		}else{
-	GOTO       L_main107
-L_main94:
-;Seminarska.c,291 :: 		greska();
-	CALL       _greska+0
-;Seminarska.c,292 :: 		}
 L_main107:
-;Seminarska.c,293 :: 		clear();
+;Seminarska.c,290 :: 		clear();
 	CALL       _clear+0
-;Seminarska.c,294 :: 		}
+;Seminarska.c,291 :: 		}
 L_main91:
-;Seminarska.c,295 :: 		}else if(kp == 47){  //Erase
+;Seminarska.c,292 :: 		}else if(kp == 47){  //Erase   //Da se smeni pristapot do stanica
 	GOTO       L_main108
 L_main84:
 	MOVF       _kp+0, 0
 	XORLW      47
 	BTFSS      STATUS+0, 2
 	GOTO       L_main109
-;Seminarska.c,296 :: 		Lcd_Cmd(_LCD_CLEAR);
+;Seminarska.c,293 :: 		Lcd_Cmd(_LCD_CLEAR);
 	MOVLW      1
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;Seminarska.c,297 :: 		temp = brStanici * 16;
-	MOVLW      4
-	MOVWF      R0+0
-	MOVF       _brStanici+0, 0
-	MOVWF      _temp+0
-	MOVF       _brStanici+1, 0
-	MOVWF      _temp+1
-	MOVF       R0+0, 0
-L__main184:
-	BTFSC      STATUS+0, 2
-	GOTO       L__main185
-	RLF        _temp+0, 1
-	RLF        _temp+1, 1
-	BCF        _temp+0, 0
-	ADDLW      255
-	GOTO       L__main184
-L__main185:
-;Seminarska.c,298 :: 		for(i = 0; i < 15; i++){
-	CLRF       _i+0
-	CLRF       _i+1
-L_main110:
-	MOVLW      128
-	XORWF      _i+1, 0
-	MOVWF      R0+0
-	MOVLW      128
-	SUBWF      R0+0, 0
-	BTFSS      STATUS+0, 2
-	GOTO       L__main186
-	MOVLW      15
-	SUBWF      _i+0, 0
-L__main186:
-	BTFSC      STATUS+0, 0
-	GOTO       L_main111
-;Seminarska.c,299 :: 		EEPROM_Write(temp, 0);
-	MOVF       _temp+0, 0
-	MOVWF      FARG_EEPROM_Write_Address+0
-	CLRF       FARG_EEPROM_Write_data_+0
-	CALL       _EEPROM_Write+0
-;Seminarska.c,300 :: 		temp +=1;
-	INCF       _temp+0, 1
-	BTFSC      STATUS+0, 2
-	INCF       _temp+1, 1
-;Seminarska.c,298 :: 		for(i = 0; i < 15; i++){
-	INCF       _i+0, 1
-	BTFSC      STATUS+0, 2
-	INCF       _i+1, 1
-;Seminarska.c,301 :: 		}
-	GOTO       L_main110
-L_main111:
-;Seminarska.c,302 :: 		}else{
-	GOTO       L_main113
-L_main109:
-;Seminarska.c,303 :: 		if(flagPlus){  //Ako stisneme +
-	MOVF       _flagPlus+0, 0
-	BTFSC      STATUS+0, 2
-	GOTO       L_main114
-;Seminarska.c,304 :: 		linija[pomestuvanje] = oldState;
-	MOVF       _pomestuvanje+0, 0
-	MOVWF      R0+0
-	RLF        R0+0, 1
-	BCF        R0+0, 0
-	MOVF       R0+0, 0
-	ADDLW      _linija+0
-	MOVWF      FSR
-	MOVF       _oldState+0, 0
-	MOVWF      INDF+0
-	INCF       FSR, 1
-	CLRF       INDF+0
-;Seminarska.c,305 :: 		oldState = 0;
-	CLRF       _oldState+0
-;Seminarska.c,306 :: 		pomestuvanje++;
-	INCF       _pomestuvanje+0, 1
-;Seminarska.c,307 :: 		flagPlus = 0;
-	CLRF       _flagPlus+0
-;Seminarska.c,308 :: 		}else if(oldState == 76 || oldState == 74){ // J ili L
-	GOTO       L_main115
-L_main114:
-	MOVF       _oldState+0, 0
-	XORLW      76
-	BTFSC      STATUS+0, 2
-	GOTO       L__main158
-	MOVF       _oldState+0, 0
-	XORLW      74
-	BTFSC      STATUS+0, 2
-	GOTO       L__main158
-	GOTO       L_main118
-L__main158:
-;Seminarska.c,309 :: 		linija[pomestuvanje] = oldState;
-	MOVF       _pomestuvanje+0, 0
-	MOVWF      R0+0
-	RLF        R0+0, 1
-	BCF        R0+0, 0
-	MOVF       R0+0, 0
-	ADDLW      _linija+0
-	MOVWF      FSR
-	MOVF       _oldState+0, 0
-	MOVWF      INDF+0
-	INCF       FSR, 1
-	CLRF       INDF+0
-;Seminarska.c,310 :: 		oldState = 0;
-	CLRF       _oldState+0
-;Seminarska.c,311 :: 		pomestuvanje++;
-	INCF       _pomestuvanje+0, 1
-;Seminarska.c,312 :: 		Lcd_Cmd(_LCD_CLEAR);
-	MOVLW      1
-	MOVWF      FARG_Lcd_Cmd_out_char+0
-	CALL       _Lcd_Cmd+0
-;Seminarska.c,313 :: 		Lcd_Out(1,1, "J ili L");
-	MOVLW      1
-	MOVWF      FARG_Lcd_Out_row+0
-	MOVLW      1
-	MOVWF      FARG_Lcd_Out_column+0
-	MOVLW      ?lstr7_Seminarska+0
-	MOVWF      FARG_Lcd_Out_text+0
-	CALL       _Lcd_Out+0
-;Seminarska.c,314 :: 		}else{
-	GOTO       L_main119
-L_main118:
-;Seminarska.c,315 :: 		if(oldState >= 48 && oldState <= 57){   // Ako e vnesena brojka
-	MOVLW      48
-	SUBWF      _oldState+0, 0
-	BTFSS      STATUS+0, 0
-	GOTO       L_main122
-	MOVF       _oldState+0, 0
-	SUBLW      57
-	BTFSS      STATUS+0, 0
-	GOTO       L_main122
-L__main157:
-;Seminarska.c,316 :: 		brStanici = brStanici * 10 + (oldState - 48);
+;Seminarska.c,294 :: 		brStanici = brStanici * 10 + (oldState - 48);
 	MOVF       _brStanici+0, 0
 	MOVWF      R0+0
 	MOVF       _brStanici+1, 0
@@ -1578,90 +1455,289 @@ L__main157:
 	ADDLW      1
 	ADDWF      R2+1, 0
 	MOVWF      _brStanici+1
-;Seminarska.c,317 :: 		Lcd_Out(1,1, "Vnesena Brojka");
+;Seminarska.c,295 :: 		for(i = 0; i < 16; i++){
+	CLRF       _i+0
+	CLRF       _i+1
+L_main110:
+	MOVLW      128
+	XORWF      _i+1, 0
+	MOVWF      R0+0
+	MOVLW      128
+	SUBWF      R0+0, 0
+	BTFSS      STATUS+0, 2
+	GOTO       L__main190
+	MOVLW      16
+	SUBWF      _i+0, 0
+L__main190:
+	BTFSC      STATUS+0, 0
+	GOTO       L_main111
+;Seminarska.c,296 :: 		if(brStanici == EEPROM_Read(i * 16)){
+	MOVLW      4
+	MOVWF      R0+0
+	MOVF       _i+0, 0
+	MOVWF      FARG_EEPROM_Read_Address+0
+	MOVF       R0+0, 0
+L__main191:
+	BTFSC      STATUS+0, 2
+	GOTO       L__main192
+	RLF        FARG_EEPROM_Read_Address+0, 1
+	BCF        FARG_EEPROM_Read_Address+0, 0
+	ADDLW      255
+	GOTO       L__main191
+L__main192:
+	CALL       _EEPROM_Read+0
+	MOVLW      0
+	XORWF      _brStanici+1, 0
+	BTFSS      STATUS+0, 2
+	GOTO       L__main193
+	MOVF       R0+0, 0
+	XORWF      _brStanici+0, 0
+L__main193:
+	BTFSS      STATUS+0, 2
+	GOTO       L_main113
+;Seminarska.c,297 :: 		temp = i * 16;
+	MOVLW      4
+	MOVWF      R0+0
+	MOVF       _i+0, 0
+	MOVWF      _temp+0
+	MOVF       _i+1, 0
+	MOVWF      _temp+1
+	MOVF       R0+0, 0
+L__main194:
+	BTFSC      STATUS+0, 2
+	GOTO       L__main195
+	RLF        _temp+0, 1
+	RLF        _temp+1, 1
+	BCF        _temp+0, 0
+	ADDLW      255
+	GOTO       L__main194
+L__main195:
+;Seminarska.c,298 :: 		for(j = 0; j < 16; j++){
+	CLRF       _j+0
+L_main114:
+	MOVLW      128
+	XORWF      _j+0, 0
+	MOVWF      R0+0
+	MOVLW      128
+	XORLW      16
+	SUBWF      R0+0, 0
+	BTFSC      STATUS+0, 0
+	GOTO       L_main115
+;Seminarska.c,299 :: 		EEPROM_Write(temp, 0xFF);
+	MOVF       _temp+0, 0
+	MOVWF      FARG_EEPROM_Write_Address+0
+	MOVLW      255
+	MOVWF      FARG_EEPROM_Write_data_+0
+	CALL       _EEPROM_Write+0
+;Seminarska.c,300 :: 		temp +=1;
+	INCF       _temp+0, 1
+	BTFSC      STATUS+0, 2
+	INCF       _temp+1, 1
+;Seminarska.c,298 :: 		for(j = 0; j < 16; j++){
+	INCF       _j+0, 1
+;Seminarska.c,301 :: 		}
+	GOTO       L_main114
+L_main115:
+;Seminarska.c,302 :: 		break;
+	GOTO       L_main111
+;Seminarska.c,303 :: 		}
+L_main113:
+;Seminarska.c,295 :: 		for(i = 0; i < 16; i++){
+	INCF       _i+0, 1
+	BTFSC      STATUS+0, 2
+	INCF       _i+1, 1
+;Seminarska.c,304 :: 		}
+	GOTO       L_main110
+L_main111:
+;Seminarska.c,305 :: 		clear();
+	CALL       _clear+0
+;Seminarska.c,306 :: 		}else{
+	GOTO       L_main117
+L_main109:
+;Seminarska.c,307 :: 		if(flagPlus){  //Ako stisneme +
+	MOVF       _flagPlus+0, 0
+	BTFSC      STATUS+0, 2
+	GOTO       L_main118
+;Seminarska.c,308 :: 		linija[pomestuvanje] = oldState;
+	MOVF       _pomestuvanje+0, 0
+	MOVWF      R0+0
+	RLF        R0+0, 1
+	BCF        R0+0, 0
+	MOVF       R0+0, 0
+	ADDLW      _linija+0
+	MOVWF      FSR
+	MOVF       _oldState+0, 0
+	MOVWF      INDF+0
+	INCF       FSR, 1
+	CLRF       INDF+0
+;Seminarska.c,309 :: 		oldState = 0;
+	CLRF       _oldState+0
+;Seminarska.c,310 :: 		pomestuvanje++;
+	INCF       _pomestuvanje+0, 1
+;Seminarska.c,311 :: 		flagPlus = 0;
+	CLRF       _flagPlus+0
+;Seminarska.c,312 :: 		}else if(oldState == 76 || oldState == 74){ // J ili L
+	GOTO       L_main119
+L_main118:
+	MOVF       _oldState+0, 0
+	XORLW      76
+	BTFSC      STATUS+0, 2
+	GOTO       L__main162
+	MOVF       _oldState+0, 0
+	XORLW      74
+	BTFSC      STATUS+0, 2
+	GOTO       L__main162
+	GOTO       L_main122
+L__main162:
+;Seminarska.c,313 :: 		linija[pomestuvanje] = oldState;
+	MOVF       _pomestuvanje+0, 0
+	MOVWF      R0+0
+	RLF        R0+0, 1
+	BCF        R0+0, 0
+	MOVF       R0+0, 0
+	ADDLW      _linija+0
+	MOVWF      FSR
+	MOVF       _oldState+0, 0
+	MOVWF      INDF+0
+	INCF       FSR, 1
+	CLRF       INDF+0
+;Seminarska.c,314 :: 		oldState = 0;
+	CLRF       _oldState+0
+;Seminarska.c,315 :: 		pomestuvanje++;
+	INCF       _pomestuvanje+0, 1
+;Seminarska.c,316 :: 		Lcd_Cmd(_LCD_CLEAR);
+	MOVLW      1
+	MOVWF      FARG_Lcd_Cmd_out_char+0
+	CALL       _Lcd_Cmd+0
+;Seminarska.c,317 :: 		Lcd_Out(1,1, "J ili L");
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_column+0
-	MOVLW      ?lstr8_Seminarska+0
+	MOVLW      ?lstr4_Seminarska+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;Seminarska.c,318 :: 		Delay_ms(10);
+;Seminarska.c,318 :: 		}else{
+	GOTO       L_main123
+L_main122:
+;Seminarska.c,319 :: 		if(oldState >= 48 && oldState <= 57){   // Ako e vnesena brojka
+	MOVLW      48
+	SUBWF      _oldState+0, 0
+	BTFSS      STATUS+0, 0
+	GOTO       L_main126
+	MOVF       _oldState+0, 0
+	SUBLW      57
+	BTFSS      STATUS+0, 0
+	GOTO       L_main126
+L__main161:
+;Seminarska.c,320 :: 		brStanici = brStanici * 10 + (oldState - 48);
+	MOVF       _brStanici+0, 0
+	MOVWF      R0+0
+	MOVF       _brStanici+1, 0
+	MOVWF      R0+1
+	MOVLW      10
+	MOVWF      R4+0
+	MOVLW      0
+	MOVWF      R4+1
+	CALL       _Mul_16x16_U+0
+	MOVLW      48
+	SUBWF      _oldState+0, 0
+	MOVWF      R2+0
+	CLRF       R2+1
+	BTFSS      STATUS+0, 0
+	DECF       R2+1, 1
+	MOVF       R2+0, 0
+	ADDWF      R0+0, 0
+	MOVWF      _brStanici+0
+	MOVF       R0+1, 0
+	BTFSC      STATUS+0, 0
+	ADDLW      1
+	ADDWF      R2+1, 0
+	MOVWF      _brStanici+1
+;Seminarska.c,321 :: 		Lcd_Out(1,1, "Vnesena Brojka");
+	MOVLW      1
+	MOVWF      FARG_Lcd_Out_row+0
+	MOVLW      1
+	MOVWF      FARG_Lcd_Out_column+0
+	MOVLW      ?lstr5_Seminarska+0
+	MOVWF      FARG_Lcd_Out_text+0
+	CALL       _Lcd_Out+0
+;Seminarska.c,322 :: 		Delay_ms(10);
 	MOVLW      26
 	MOVWF      R12+0
 	MOVLW      248
 	MOVWF      R13+0
-L_main123:
+L_main127:
 	DECFSZ     R13+0, 1
-	GOTO       L_main123
+	GOTO       L_main127
 	DECFSZ     R12+0, 1
-	GOTO       L_main123
+	GOTO       L_main127
 	NOP
-;Seminarska.c,319 :: 		}
-L_main122:
-;Seminarska.c,320 :: 		}
+;Seminarska.c,323 :: 		}
+L_main126:
+;Seminarska.c,324 :: 		}
+L_main123:
 L_main119:
-L_main115:
-;Seminarska.c,321 :: 		}
-L_main113:
+;Seminarska.c,325 :: 		}
+L_main117:
 L_main108:
 L_main83:
 L_main81:
-;Seminarska.c,322 :: 		}while(1);
+;Seminarska.c,326 :: 		}while(1);
 	GOTO       L_main19
 L_main20:
-;Seminarska.c,323 :: 		}else{
-	GOTO       L_main124
+;Seminarska.c,327 :: 		}else{
+	GOTO       L_main128
 L_main18:
-;Seminarska.c,324 :: 		i = 0;
+;Seminarska.c,328 :: 		i = 0;
 	CLRF       _i+0
 	CLRF       _i+1
-;Seminarska.c,325 :: 		flagUart=0;
+;Seminarska.c,329 :: 		flagUart=0;
 	CLRF       _flagUart+0
-;Seminarska.c,326 :: 		brCifri = 0;
+;Seminarska.c,330 :: 		brCifri = 0;
 	CLRF       _brCifri+0
-;Seminarska.c,327 :: 		strcpy(getTime, "GET TIME");
+;Seminarska.c,331 :: 		strcpy(getTime, "GET TIME");
 	MOVLW      _getTime+0
 	MOVWF      FARG_strcpy_to+0
-	MOVLW      ?lstr9_Seminarska+0
+	MOVLW      ?lstr6_Seminarska+0
 	MOVWF      FARG_strcpy_from+0
 	CALL       _strcpy+0
-;Seminarska.c,328 :: 		while(1){
-L_main125:
-;Seminarska.c,329 :: 		typeUser = ADC_Read(7);
+;Seminarska.c,332 :: 		while(1){
+L_main129:
+;Seminarska.c,333 :: 		typeUser = ADC_Read(7);
 	MOVLW      7
 	MOVWF      FARG_ADC_Read_channel+0
 	CALL       _ADC_Read+0
 	MOVF       R0+0, 0
 	MOVWF      _typeUser+0
-;Seminarska.c,330 :: 		if(typeUser == 0)
+;Seminarska.c,334 :: 		if(typeUser == 0)
 	MOVF       R0+0, 0
 	XORLW      0
 	BTFSS      STATUS+0, 2
-	GOTO       L_main127
-;Seminarska.c,331 :: 		break;
-	GOTO       L_main126
-L_main127:
-;Seminarska.c,332 :: 		if (UART1_Data_Ready()) {
+	GOTO       L_main131
+;Seminarska.c,335 :: 		break;
+	GOTO       L_main130
+L_main131:
+;Seminarska.c,336 :: 		if (UART1_Data_Ready()) {
 	CALL       _UART1_Data_Ready+0
 	MOVF       R0+0, 0
 	BTFSC      STATUS+0, 2
-	GOTO       L_main128
-;Seminarska.c,333 :: 		uart_rd = UART1_Read();
+	GOTO       L_main132
+;Seminarska.c,337 :: 		uart_rd = UART1_Read();
 	CALL       _UART1_Read+0
 	MOVF       R0+0, 0
 	MOVWF      _uart_rd+0
-;Seminarska.c,334 :: 		porakaOdEsurat[i] = uart_rd;
+;Seminarska.c,338 :: 		porakaOdEsurat[i] = uart_rd;
 	MOVF       _i+0, 0
 	ADDLW      _porakaOdEsurat+0
 	MOVWF      FSR
 	MOVF       R0+0, 0
 	MOVWF      INDF+0
-;Seminarska.c,335 :: 		i++;
+;Seminarska.c,339 :: 		i++;
 	INCF       _i+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _i+1, 1
-;Seminarska.c,336 :: 		sporedba = strcmp(getTime,porakaOdEsurat);
+;Seminarska.c,340 :: 		sporedba = strcmp(getTime,porakaOdEsurat);
 	MOVLW      _getTime+0
 	MOVWF      FARG_strcmp_s1+0
 	MOVLW      _porakaOdEsurat+0
@@ -1669,28 +1745,28 @@ L_main127:
 	CALL       _strcmp+0
 	MOVF       R0+0, 0
 	MOVWF      _sporedba+0
-;Seminarska.c,337 :: 		if(sporedba == 0){
+;Seminarska.c,341 :: 		if(sporedba == 0){
 	MOVF       R0+0, 0
 	XORLW      0
 	BTFSS      STATUS+0, 2
-	GOTO       L_main129
-;Seminarska.c,338 :: 		flagUart=1;
+	GOTO       L_main133
+;Seminarska.c,342 :: 		flagUart=1;
 	MOVLW      1
 	MOVWF      _flagUart+0
-;Seminarska.c,339 :: 		break;
-	GOTO       L_main126
-;Seminarska.c,340 :: 		}
-L_main129:
-;Seminarska.c,342 :: 		flagUart=0;
-	CLRF       _flagUart+0
+;Seminarska.c,343 :: 		break;
+	GOTO       L_main130
 ;Seminarska.c,344 :: 		}
-L_main128:
-;Seminarska.c,345 :: 		}
-	GOTO       L_main125
-L_main126:
-;Seminarska.c,346 :: 		for(j = 0; j < 20; j++){
+L_main133:
+;Seminarska.c,346 :: 		flagUart=0;
+	CLRF       _flagUart+0
+;Seminarska.c,348 :: 		}
+L_main132:
+;Seminarska.c,349 :: 		}
+	GOTO       L_main129
+L_main130:
+;Seminarska.c,350 :: 		for(j = 0; j < 20; j++){
 	CLRF       _j+0
-L_main131:
+L_main135:
 	MOVLW      128
 	XORWF      _j+0, 0
 	MOVWF      R0+0
@@ -1698,57 +1774,57 @@ L_main131:
 	XORLW      20
 	SUBWF      R0+0, 0
 	BTFSC      STATUS+0, 0
-	GOTO       L_main132
-;Seminarska.c,347 :: 		porakaOdEsurat[j] = 0;
+	GOTO       L_main136
+;Seminarska.c,351 :: 		porakaOdEsurat[j] = 0;
 	MOVF       _j+0, 0
 	ADDLW      _porakaOdEsurat+0
 	MOVWF      FSR
 	CLRF       INDF+0
-;Seminarska.c,346 :: 		for(j = 0; j < 20; j++){
+;Seminarska.c,350 :: 		for(j = 0; j < 20; j++){
 	INCF       _j+0, 1
-;Seminarska.c,348 :: 		}
-	GOTO       L_main131
-L_main132:
-;Seminarska.c,349 :: 		if(flagUart==1) {
+;Seminarska.c,352 :: 		}
+	GOTO       L_main135
+L_main136:
+;Seminarska.c,353 :: 		if(flagUart==1) {
 	MOVF       _flagUart+0, 0
 	XORLW      1
 	BTFSS      STATUS+0, 2
-	GOTO       L_main134
-;Seminarska.c,350 :: 		while(1){
-L_main135:
-;Seminarska.c,351 :: 		if(UART1_Data_Ready()){
+	GOTO       L_main138
+;Seminarska.c,354 :: 		while(1){
+L_main139:
+;Seminarska.c,355 :: 		if(UART1_Data_Ready()){
 	CALL       _UART1_Data_Ready+0
 	MOVF       R0+0, 0
 	BTFSC      STATUS+0, 2
-	GOTO       L_main137
-;Seminarska.c,352 :: 		uart_rd = UART1_Read();
+	GOTO       L_main141
+;Seminarska.c,356 :: 		uart_rd = UART1_Read();
 	CALL       _UART1_Read+0
 	MOVF       R0+0, 0
 	MOVWF      _uart_rd+0
-;Seminarska.c,354 :: 		if(uart_rd == 58){
+;Seminarska.c,358 :: 		if(uart_rd == 58){
 	MOVF       R0+0, 0
 	XORLW      58
 	BTFSS      STATUS+0, 2
-	GOTO       L_main138
-;Seminarska.c,355 :: 		flagDveTocki = 1;
+	GOTO       L_main142
+;Seminarska.c,359 :: 		flagDveTocki = 1;
 	MOVLW      1
 	MOVWF      _flagDveTocki+0
-;Seminarska.c,357 :: 		Lcd_Out(2,1, "vIKAC");
+;Seminarska.c,361 :: 		Lcd_Out(2,1, "vIKAC");
 	MOVLW      2
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_column+0
-	MOVLW      ?lstr10_Seminarska+0
+	MOVLW      ?lstr7_Seminarska+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;Seminarska.c,358 :: 		}else if(flagDveTocki == 0){
-	GOTO       L_main139
-L_main138:
+;Seminarska.c,362 :: 		}else if(flagDveTocki == 0){
+	GOTO       L_main143
+L_main142:
 	MOVF       _flagDveTocki+0, 0
 	XORLW      0
 	BTFSS      STATUS+0, 2
-	GOTO       L_main140
-;Seminarska.c,359 :: 		saati = saati * 10 + (uart_rd - 48);
+	GOTO       L_main144
+;Seminarska.c,363 :: 		saati = saati * 10 + (uart_rd - 48);
 	MOVF       _saati+0, 0
 	MOVWF      R0+0
 	MOVLW      10
@@ -1760,10 +1836,10 @@ L_main138:
 	MOVF       R1+0, 0
 	ADDWF      R0+0, 0
 	MOVWF      _saati+0
-;Seminarska.c,360 :: 		}else{
-	GOTO       L_main141
-L_main140:
-;Seminarska.c,361 :: 		minuti = minuti * 10 + (uart_rd - 48);
+;Seminarska.c,364 :: 		}else{
+	GOTO       L_main145
+L_main144:
+;Seminarska.c,365 :: 		minuti = minuti * 10 + (uart_rd - 48);
 	MOVF       _minuti+0, 0
 	MOVWF      R0+0
 	MOVLW      10
@@ -1775,14 +1851,14 @@ L_main140:
 	MOVF       R1+0, 0
 	ADDWF      R0+0, 0
 	MOVWF      _minuti+0
-;Seminarska.c,362 :: 		brCifri++;
+;Seminarska.c,366 :: 		brCifri++;
 	INCF       _brCifri+0, 1
-;Seminarska.c,363 :: 		if(brCifri == 2){
+;Seminarska.c,367 :: 		if(brCifri == 2){
 	MOVF       _brCifri+0, 0
 	XORLW      2
 	BTFSS      STATUS+0, 2
-	GOTO       L_main142
-;Seminarska.c,364 :: 		saati *= 60;
+	GOTO       L_main146
+;Seminarska.c,368 :: 		saati *= 60;
 	MOVF       _saati+0, 0
 	MOVWF      R0+0
 	MOVLW      60
@@ -1790,41 +1866,41 @@ L_main140:
 	CALL       _Mul_8x8_U+0
 	MOVF       R0+0, 0
 	MOVWF      _saati+0
-;Seminarska.c,365 :: 		minuti += saati;
+;Seminarska.c,369 :: 		minuti += saati;
 	MOVF       R0+0, 0
 	ADDWF      _minuti+0, 1
-;Seminarska.c,366 :: 		break;
-	GOTO       L_main136
-;Seminarska.c,367 :: 		}
-L_main142:
-;Seminarska.c,368 :: 		}
-L_main141:
-L_main139:
-;Seminarska.c,369 :: 		}
-L_main137:
-;Seminarska.c,370 :: 		}
-	GOTO       L_main135
-L_main136:
-;Seminarska.c,373 :: 		i=0;
-	CLRF       _i+0
-	CLRF       _i+1
-;Seminarska.c,374 :: 		for(i=0;i<16;i++) {
-	CLRF       _i+0
-	CLRF       _i+1
+;Seminarska.c,370 :: 		break;
+	GOTO       L_main140
+;Seminarska.c,371 :: 		}
+L_main146:
+;Seminarska.c,372 :: 		}
+L_main145:
 L_main143:
+;Seminarska.c,373 :: 		}
+L_main141:
+;Seminarska.c,374 :: 		}
+	GOTO       L_main139
+L_main140:
+;Seminarska.c,377 :: 		i=0;
+	CLRF       _i+0
+	CLRF       _i+1
+;Seminarska.c,378 :: 		for(i=0;i<16;i++) {
+	CLRF       _i+0
+	CLRF       _i+1
+L_main147:
 	MOVLW      128
 	XORWF      _i+1, 0
 	MOVWF      R0+0
 	MOVLW      128
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main187
+	GOTO       L__main196
 	MOVLW      16
 	SUBWF      _i+0, 0
-L__main187:
+L__main196:
 	BTFSC      STATUS+0, 0
-	GOTO       L_main144
-;Seminarska.c,375 :: 		tmp = i*16;
+	GOTO       L_main148
+;Seminarska.c,379 :: 		tmp = i*16;
 	MOVLW      4
 	MOVWF      R2+0
 	MOVF       _i+0, 0
@@ -1832,20 +1908,20 @@ L__main187:
 	MOVF       _i+1, 0
 	MOVWF      R0+1
 	MOVF       R2+0, 0
-L__main188:
+L__main197:
 	BTFSC      STATUS+0, 2
-	GOTO       L__main189
+	GOTO       L__main198
 	RLF        R0+0, 1
 	RLF        R0+1, 1
 	BCF        R0+0, 0
 	ADDLW      255
-	GOTO       L__main188
-L__main189:
+	GOTO       L__main197
+L__main198:
 	MOVF       R0+0, 0
 	MOVWF      _tmp+0
 	MOVF       R0+1, 0
 	MOVWF      _tmp+1
-;Seminarska.c,376 :: 		tmp += 11;
+;Seminarska.c,380 :: 		tmp += 11;
 	MOVLW      11
 	ADDWF      R0+0, 1
 	BTFSC      STATUS+0, 0
@@ -1854,29 +1930,29 @@ L__main189:
 	MOVWF      _tmp+0
 	MOVF       R0+1, 0
 	MOVWF      _tmp+1
-;Seminarska.c,377 :: 		vreme=EEPROM_Read(tmp);
+;Seminarska.c,381 :: 		vreme=EEPROM_Read(tmp);
 	MOVF       R0+0, 0
 	MOVWF      FARG_EEPROM_Read_Address+0
 	CALL       _EEPROM_Read+0
 	MOVF       R0+0, 0
 	MOVWF      _vreme+0
-;Seminarska.c,378 :: 		if(vreme == 65535){
+;Seminarska.c,382 :: 		if(vreme == 65535){
 	MOVLW      0
 	BTFSC      R0+0, 7
 	MOVLW      255
 	XORLW      255
 	BTFSS      STATUS+0, 2
-	GOTO       L__main190
+	GOTO       L__main199
 	MOVLW      255
 	XORWF      R0+0, 0
-L__main190:
+L__main199:
 	BTFSS      STATUS+0, 2
-	GOTO       L_main146
-;Seminarska.c,379 :: 		continue;
-	GOTO       L_main145
-;Seminarska.c,380 :: 		}
-L_main146:
-;Seminarska.c,381 :: 		if(vreme > minuti) {
+	GOTO       L_main150
+;Seminarska.c,383 :: 		continue;
+	GOTO       L_main149
+;Seminarska.c,384 :: 		}
+L_main150:
+;Seminarska.c,385 :: 		if(vreme > minuti) {
 	MOVLW      128
 	XORWF      _minuti+0, 0
 	MOVWF      R0+0
@@ -1884,19 +1960,19 @@ L_main146:
 	XORWF      _vreme+0, 0
 	SUBWF      R0+0, 0
 	BTFSC      STATUS+0, 0
-	GOTO       L_main147
-;Seminarska.c,382 :: 		razlika = vreme-minuti;
+	GOTO       L_main151
+;Seminarska.c,386 :: 		razlika = vreme-minuti;
 	MOVF       _minuti+0, 0
 	SUBWF      _vreme+0, 0
 	MOVWF      _razlika+0
-;Seminarska.c,383 :: 		Lcd_Cmd(_LCD_CLEAR);
+;Seminarska.c,387 :: 		Lcd_Cmd(_LCD_CLEAR);
 	MOVLW      1
 	MOVWF      FARG_Lcd_Cmd_out_char+0
 	CALL       _Lcd_Cmd+0
-;Seminarska.c,384 :: 		kp = razlika;
+;Seminarska.c,388 :: 		kp = razlika;
 	MOVF       _razlika+0, 0
 	MOVWF      _kp+0
-;Seminarska.c,385 :: 		if(razlika < min1Time) {
+;Seminarska.c,389 :: 		if(razlika < min1Time) {
 	MOVLW      128
 	BTFSC      _razlika+0, 7
 	MOVLW      127
@@ -1905,31 +1981,31 @@ L_main146:
 	XORWF      _min1Time+1, 0
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main191
+	GOTO       L__main200
 	MOVF       _min1Time+0, 0
 	SUBWF      _razlika+0, 0
-L__main191:
+L__main200:
 	BTFSC      STATUS+0, 0
-	GOTO       L_main148
-;Seminarska.c,386 :: 		min2Time=min1Time;
+	GOTO       L_main152
+;Seminarska.c,390 :: 		min2Time=min1Time;
 	MOVF       _min1Time+0, 0
 	MOVWF      _min2Time+0
 	MOVF       _min1Time+1, 0
 	MOVWF      _min2Time+1
-;Seminarska.c,387 :: 		min1Time=razlika;
+;Seminarska.c,391 :: 		min1Time=razlika;
 	MOVF       _razlika+0, 0
 	MOVWF      _min1Time+0
 	MOVLW      0
 	BTFSC      _min1Time+0, 7
 	MOVLW      255
 	MOVWF      _min1Time+1
-;Seminarska.c,388 :: 		min2Stanica=min1Stanica;
+;Seminarska.c,392 :: 		min2Stanica=min1Stanica;
 	MOVF       _min1Stanica+0, 0
 	MOVWF      _min2Stanica+0
-;Seminarska.c,389 :: 		min1Stanica= i;
+;Seminarska.c,393 :: 		min1Stanica= i;
 	MOVF       _i+0, 0
 	MOVWF      _min1Stanica+0
-;Seminarska.c,390 :: 		WordToStr(min1Stanica, textTest);
+;Seminarska.c,394 :: 		WordToStr(min1Stanica, textTest);
 	MOVF       _i+0, 0
 	MOVWF      FARG_WordToStr_input+0
 	MOVLW      0
@@ -1939,7 +2015,7 @@ L__main191:
 	MOVLW      _textTest+0
 	MOVWF      FARG_WordToStr_output+0
 	CALL       _WordToStr+0
-;Seminarska.c,391 :: 		Lcd_Out(1,1,min1Stanica);
+;Seminarska.c,395 :: 		Lcd_Out(1,1,min1Stanica);
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
@@ -1947,10 +2023,10 @@ L__main191:
 	MOVF       _min1Stanica+0, 0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;Seminarska.c,392 :: 		}
-	GOTO       L_main149
-L_main148:
-;Seminarska.c,393 :: 		else if(razlika<min2Time && razlika!=min1Time) {
+;Seminarska.c,396 :: 		}
+	GOTO       L_main153
+L_main152:
+;Seminarska.c,397 :: 		else if(razlika<min2Time && razlika!=min1Time) {
 	MOVLW      128
 	BTFSC      _razlika+0, 7
 	MOVLW      127
@@ -1959,93 +2035,93 @@ L_main148:
 	XORWF      _min2Time+1, 0
 	SUBWF      R0+0, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main192
+	GOTO       L__main201
 	MOVF       _min2Time+0, 0
 	SUBWF      _razlika+0, 0
-L__main192:
+L__main201:
 	BTFSC      STATUS+0, 0
-	GOTO       L_main152
+	GOTO       L_main156
 	MOVLW      0
 	BTFSC      _razlika+0, 7
 	MOVLW      255
 	XORWF      _min1Time+1, 0
 	BTFSS      STATUS+0, 2
-	GOTO       L__main193
+	GOTO       L__main202
 	MOVF       _min1Time+0, 0
 	XORWF      _razlika+0, 0
-L__main193:
+L__main202:
 	BTFSC      STATUS+0, 2
-	GOTO       L_main152
-L__main156:
-;Seminarska.c,394 :: 		min2Time=razlika;
+	GOTO       L_main156
+L__main160:
+;Seminarska.c,398 :: 		min2Time=razlika;
 	MOVF       _razlika+0, 0
 	MOVWF      _min2Time+0
 	MOVLW      0
 	BTFSC      _min2Time+0, 7
 	MOVLW      255
 	MOVWF      _min2Time+1
-;Seminarska.c,395 :: 		min2Stanica= i;
+;Seminarska.c,399 :: 		min2Stanica= i;
 	MOVF       _i+0, 0
 	MOVWF      _min2Stanica+0
-;Seminarska.c,396 :: 		}
-L_main152:
+;Seminarska.c,400 :: 		}
+L_main156:
+L_main153:
+;Seminarska.c,401 :: 		}
+L_main151:
+;Seminarska.c,402 :: 		}
 L_main149:
-;Seminarska.c,397 :: 		}
-L_main147:
-;Seminarska.c,398 :: 		}
-L_main145:
-;Seminarska.c,374 :: 		for(i=0;i<16;i++) {
+;Seminarska.c,378 :: 		for(i=0;i<16;i++) {
 	INCF       _i+0, 1
 	BTFSC      STATUS+0, 2
 	INCF       _i+1, 1
-;Seminarska.c,398 :: 		}
-	GOTO       L_main143
-L_main144:
-;Seminarska.c,400 :: 		i=0;
+;Seminarska.c,402 :: 		}
+	GOTO       L_main147
+L_main148:
+;Seminarska.c,404 :: 		i=0;
 	CLRF       _i+0
 	CLRF       _i+1
-;Seminarska.c,401 :: 		pomestuvanje = 0;
+;Seminarska.c,405 :: 		pomestuvanje = 0;
 	CLRF       _pomestuvanje+0
-;Seminarska.c,402 :: 		pecati();
+;Seminarska.c,406 :: 		pecati();
 	CALL       _pecati+0
-;Seminarska.c,404 :: 		Delay_ms(20);
+;Seminarska.c,408 :: 		Delay_ms(20);
 	MOVLW      52
 	MOVWF      R12+0
 	MOVLW      241
 	MOVWF      R13+0
-L_main153:
+L_main157:
 	DECFSZ     R13+0, 1
-	GOTO       L_main153
+	GOTO       L_main157
 	DECFSZ     R12+0, 1
-	GOTO       L_main153
+	GOTO       L_main157
 	NOP
 	NOP
-;Seminarska.c,405 :: 		Lcd_Out(2,1, "KRAJ");
+;Seminarska.c,409 :: 		Lcd_Out(2,1, "KRAJ");
 	MOVLW      2
 	MOVWF      FARG_Lcd_Out_row+0
 	MOVLW      1
 	MOVWF      FARG_Lcd_Out_column+0
-	MOVLW      ?lstr11_Seminarska+0
+	MOVLW      ?lstr8_Seminarska+0
 	MOVWF      FARG_Lcd_Out_text+0
 	CALL       _Lcd_Out+0
-;Seminarska.c,406 :: 		Delay_ms(5);
+;Seminarska.c,410 :: 		Delay_ms(5);
 	MOVLW      13
 	MOVWF      R12+0
 	MOVLW      251
 	MOVWF      R13+0
-L_main154:
+L_main158:
 	DECFSZ     R13+0, 1
-	GOTO       L_main154
+	GOTO       L_main158
 	DECFSZ     R12+0, 1
-	GOTO       L_main154
+	GOTO       L_main158
 	NOP
 	NOP
-;Seminarska.c,407 :: 		}
-L_main134:
-;Seminarska.c,408 :: 		}
-L_main124:
-;Seminarska.c,409 :: 		}
+;Seminarska.c,411 :: 		}
+L_main138:
+;Seminarska.c,412 :: 		}
+L_main128:
+;Seminarska.c,413 :: 		}
 	GOTO       L_main16
-;Seminarska.c,410 :: 		}
+;Seminarska.c,414 :: 		}
 	GOTO       $+0
 ; end of _main

@@ -235,11 +235,11 @@ void main() {
  tmp = i * 16 + 11;
  EEPROM_Write(tmp, vreme);
  tmp += 2;
- EEPROM_Write(tmp, "M");
+ EEPROM_Write(tmp, 'M');
  tmp += 1;
- EEPROM_Write(tmp, "i");
+ EEPROM_Write(tmp, 'i');
  tmp += 1;
- EEPROM_Write(tmp, "n");
+ EEPROM_Write(tmp, 'n');
  }
  }
  clear();
@@ -248,13 +248,14 @@ void main() {
  brStanici = brStanici * 10 + (oldState - 48);
  for(i = 0; i < 16; i++){
  if(brStanici == EEPROM_Read(i * 16)){
- temp = i * 16;
- flagVneseno = 1;
+ tmp = i * 16;
+ break;
+ }else if(EEPROM_Read(i * 16) == 0xFF){
+ EEPROM_Write(i * 16, brStanici);
+ tmp = i * 16;
+ break;
  }
  }
- if(flagVneseno == 0){
- EEPROM_Write(countStanici * 16, brStanici);
- tmp = countStanici * 16;
  for(i = 0; i < pomestuvanje; i++){
  tmp += 1;
  EEPROM_Write(tmp, linija[i]);
@@ -264,10 +265,6 @@ void main() {
  tmp += 1;
  EEPROM_Write(tmp, 0);
  }
- countStanici++;
- }else{
- greska();
- }
  }else{
  greska();
  }
@@ -275,11 +272,18 @@ void main() {
  }
  }else if(kp == 47){
  Lcd_Cmd(_LCD_CLEAR);
- temp = brStanici * 16;
- for(i = 0; i < 15; i++){
- EEPROM_Write(temp, 0);
+ brStanici = brStanici * 10 + (oldState - 48);
+ for(i = 0; i < 16; i++){
+ if(brStanici == EEPROM_Read(i * 16)){
+ temp = i * 16;
+ for(j = 0; j < 16; j++){
+ EEPROM_Write(temp, 0xFF);
  temp +=1;
  }
+ break;
+ }
+ }
+ clear();
  }else{
  if(flagPlus){
  linija[pomestuvanje] = oldState;
