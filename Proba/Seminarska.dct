@@ -247,6 +247,7 @@ bclif_bit
 bf
 bf_bit
 boot16_delay_5ms
+br
 brcifri
 brg0
 brg0_bit
@@ -653,6 +654,7 @@ isspace
 isupper
 isxdigit
 j
+k
 keypad_init
 keypad_key_click
 keypad_key_press
@@ -822,6 +824,8 @@ pdc5
 pdc5_bit
 pdc6
 pdc6_bit
+pecati
+pecatimin
 peie
 peie_bit
 pen

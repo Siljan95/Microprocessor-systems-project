@@ -9,6 +9,7 @@ main
 		Delay_1us
 		Delay_5500us
 		Delay_50us
+	EEPROM_Write
 	ADC_Init
 	ADC_Read
 		Delay_22us
@@ -17,30 +18,45 @@ main
 	UART1_Data_Ready
 	UART1_Read
 	strcmp
+	Mul_8X8_U
+	EEPROM_Read
+	WordToStr
+		Div_16X16_U
+	pecati
+		Lcd_Cmd
+			Delay_1us
+			Delay_5500us
+			Delay_50us
+		pecatiMin
+			WordToStr
+				Div_16X16_U
+			Ltrim
+			Lcd_Out
+				Lcd_Cmd
+					Delay_1us
+					Delay_5500us
+					Delay_50us
+				Lcd_Chr_CP
+					Lcd_Cmd
+						Delay_1us
+						Delay_5500us
+						Delay_50us
+			Lcd_Chr
+				Lcd_Cmd
+					Delay_1us
+					Delay_5500us
+					Delay_50us
+			EEPROM_Read
+			Lcd_Chr_CP
+				Lcd_Cmd
+					Delay_1us
+					Delay_5500us
+					Delay_50us
 	Lcd_Out
 		Lcd_Cmd
 			Delay_1us
 			Delay_5500us
 			Delay_50us
-		Lcd_Chr_CP
-			Lcd_Cmd
-				Delay_1us
-				Delay_5500us
-				Delay_50us
-	Mul_8X8_U
-	WordToStr
-		Div_16X16_U
-	EEPROM_Read
-	stavi
-		strncpy
-	Div_8X8_S
-	strlen
-	Lcd_Chr_CP
-		Lcd_Cmd
-			Delay_1us
-			Delay_5500us
-			Delay_50us
-	Lcd_Out_CP
 		Lcd_Chr_CP
 			Lcd_Cmd
 				Delay_1us
